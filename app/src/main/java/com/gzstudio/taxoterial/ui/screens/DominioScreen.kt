@@ -45,9 +45,9 @@ fun DominioScreen() {
             }
         }
 
-    ) {innerPading ->
+    ) {innerPadding ->
         Column(
-            modifier = Modifier.padding(innerPading)) {
+            modifier = Modifier.padding(innerPadding)) {
             LazyColumn {
                 items(
                     items = dominios,
@@ -64,6 +64,6 @@ fun DominioScreen() {
 
 @Preview
 @Composable
-fun FirstScreenPreview() {
+private fun FirstScreenPreview() {
     DominioScreen()
 }
