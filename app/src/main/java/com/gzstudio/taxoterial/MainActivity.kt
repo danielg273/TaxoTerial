@@ -4,11 +4,15 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
+import com.gzstudio.taxoterial.navigation.ScreenDetails
+import com.gzstudio.taxoterial.navigation.ScreenDominios
+import com.gzstudio.taxoterial.ui.screens.DetailScreen
 import com.gzstudio.taxoterial.ui.screens.DominioScreen
 import com.gzstudio.taxoterial.ui.theme.TaxoTerialTheme
 
@@ -18,25 +22,25 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TaxoTerialTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { it
-//                    Greeting(
-//                        name = "Android",
-//                        modifier = Modifier.padding(innerPadding)
-//                    )
-                    DominioScreen()
+
+                val navController = rememberNavController()
+
+                NavHost(navController = navController, startDestination = ScreenDominios) {
+                    composable<ScreenDominios> {
+                        DominioScreen(navController)
+                    }
+                    composable<ScreenDetails> {
+                        val args = it.toRoute<ScreenDetails>()
+                        DetailScreen(id = args.id, navController = navController)
+                    }
                 }
+
             }
         }
     }
 }
 
-//@Composable
-//fun Greeting(name: String, modifier: Modifier = Modifier) {
-//    Text(
-//        text = "Hello $name!",
-//        modifier = modifier
-//    )
-//}
+
 
 @Preview(showBackground = true)
 @Composable

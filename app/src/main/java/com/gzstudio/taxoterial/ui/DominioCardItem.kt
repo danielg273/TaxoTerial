@@ -20,12 +20,16 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.gzstudio.taxoterial.data.Dominio
+import com.gzstudio.taxoterial.navigation.ScreenDetails
 
 @Composable
-fun DominioCardItem(dominio: Dominio) {
+fun DominioCardItem(dominio: Dominio, navController: NavController?) {
     Card(
-        onClick = { /*TODO*/ },
+        onClick = {
+            navController?.navigate(ScreenDetails(id = dominio.id))
+        },
         modifier = Modifier.padding(16.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceVariant
@@ -34,7 +38,7 @@ fun DominioCardItem(dominio: Dominio) {
         Image(
             painter = painterResource(id = dominio.dominioImageId),
             contentDescription = null,
-            contentScale = ContentScale.FillWidth,
+            contentScale = ContentScale.Crop,
             modifier = Modifier
                 .clip(MaterialTheme.shapes.large)
                 .height(250.dp)
