@@ -25,4 +25,35 @@ object DataProvider {
             )
 
     )
+
+    val reinoList = listOf(
+        Reino(
+            idDominio = 1,
+            reinoImageId = R.drawable.trav,
+            title = "Plantae",
+            body = "Eukaryota o Eukarya es el dominio (o imperio) que incluye los organismos formados por células con núcleo verdadero.",
+        ),
+
+        Reino(
+            idDominio = 1,
+            reinoImageId = R.drawable.trav,
+            title = "Fungi",
+            body = "Eukaryota o Eukarya es el dominio (o imperio) que incluye los organismos formados por células con núcleo verdadero.",
+        ),
+
+        Reino(
+            idDominio = 1,
+            reinoImageId = R.drawable.trav,
+            title = "Eukarya",
+            body = "Eukaryota o Eukarya es el dominio (o imperio) que incluye los organismos formados por células con núcleo verdadero.",
+        ),
+
+        Reino(
+            idDominio = 1,
+            reinoImageId = R.drawable.trav,
+            title = "Eukarya",
+            body = "Eukaryota o Eukarya es el dominio (o imperio) que incluye los organismos formados por células con núcleo verdadero.",
+        ),
+
+    )
 }
