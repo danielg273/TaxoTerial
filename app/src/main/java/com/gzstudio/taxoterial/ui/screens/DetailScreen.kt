@@ -46,7 +46,7 @@ fun DetailScreen(id: Int?, navController: NavController?) {
 
     Scaffold(topBar = {
         TopAppBar(
-            title = { Text(text = "Travis Scott") },
+            title = { Text(text = "${dominio?.title}") },
             colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                 containerColor = MaterialTheme.colorScheme.surfaceVariant,
                 titleContentColor = MaterialTheme.colorScheme.onSurfaceVariant
