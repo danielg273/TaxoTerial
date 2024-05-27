@@ -57,7 +57,8 @@ fun DominioCardItem(dominio: Dominio, navController: NavController?) {
             Spacer(modifier = Modifier.size(8.dp))
             Text(
                 text = dominio.body,
-                style = MaterialTheme.typography.bodyMedium
+                style = MaterialTheme.typography.bodyMedium,
+                maxLines = 4
             )
         }
     }

@@ -55,7 +55,11 @@ fun DominioScreen(navController: NavController?) {
             modifier = Modifier.padding(innerPadding)) {
             LazyColumn {
                 item {
-                    Text(text = "Los dominios son...", style = MaterialTheme.typography.bodyLarge)
+                    Text(
+                        text = "El sistema de tres dominios, propuesto por Carl Woese en 1977, clasifica a todos los organismos vivos en tres grupos principales: Bacteria, Archaea y Eukarya. Esta clasificación se basa en diferencias fundamentales en la estructura celular, el metabolismo y la genética entre estos grupos.",
+                        style = MaterialTheme.typography.bodyLarge,
+                        modifier = Modifier.padding(16.dp)
+                    )
                 }
                 items(
                     items = dominios,

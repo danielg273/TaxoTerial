@@ -29,8 +29,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.gzstudio.taxoterial.data.DataProvider
 import com.gzstudio.taxoterial.data.Dominio
@@ -64,6 +66,11 @@ fun DetailScreen(id: Int?, navController: NavController?) {
                 item {
                     ItemInfo(dominio = item)
                     Spacer(modifier = Modifier.size(32.dp))
+                    Text(
+                        text = "Reinos:",
+                        style = MaterialTheme.typography.titleLarge,
+                        modifier = Modifier.padding(16.dp)
+                    )
                 } 
                 items(
                     items = subItem,
@@ -108,7 +115,8 @@ private fun ItemInfo(dominio: Dominio?) {
         if (dominio != null) {
             Text(
                 text = dominio.body,
-                style = MaterialTheme.typography.bodyMedium
+                style = MaterialTheme.typography.bodyLarge,
+                modifier = Modifier.padding(8.dp)
             )
         }
     }
