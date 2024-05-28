@@ -27,10 +27,10 @@ import com.gzstudio.taxoterial.navigation.ScreenDetails
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SmallItemCard(item: Item, navController: NavController?) {
+fun SmallItemCard(item: Item, navController: NavController) {
     OutlinedCard(
         onClick = {
-            navController?.navigate(ScreenDetails(name = item.name))
+            navController.navigate(ScreenDetails(name = item.name))
         },
         border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline),
         modifier = Modifier

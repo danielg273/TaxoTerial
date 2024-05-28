@@ -9,3 +9,6 @@ object ScreenDominios
 data class ScreenDetails(
     val name: String
 )
+
+@Serializable
+object ScreenAbout

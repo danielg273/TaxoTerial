@@ -10,8 +10,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import com.gzstudio.taxoterial.navigation.ScreenAbout
 import com.gzstudio.taxoterial.navigation.ScreenDetails
 import com.gzstudio.taxoterial.navigation.ScreenDominios
+import com.gzstudio.taxoterial.ui.screens.AboutScreen
 import com.gzstudio.taxoterial.ui.screens.DetailScreen
 import com.gzstudio.taxoterial.ui.screens.DominioScreen
 import com.gzstudio.taxoterial.ui.theme.TaxoTerialTheme
@@ -32,6 +34,9 @@ class MainActivity : ComponentActivity() {
                     composable<ScreenDetails> {
                         val args = it.toRoute<ScreenDetails>()
                         DetailScreen(name = args.name, navController = navController)
+                    }
+                    composable<ScreenAbout> {
+                        AboutScreen(navController = navController)
                     }
                 }
 

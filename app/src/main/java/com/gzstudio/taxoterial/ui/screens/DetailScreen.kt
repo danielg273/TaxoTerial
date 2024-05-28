@@ -37,7 +37,7 @@ import com.gzstudio.taxoterial.ui.SmallItemCard
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DetailScreen(name: String, navController: NavController?) {
+fun DetailScreen(name: String, navController: NavController) {
 
     val item = remember { DataProvider.itemLists }.find { it.name == name }
     val subItems = remember { DataProvider.itemLists }.filter { it.type == item?.child && it.parent == name}
@@ -52,7 +52,7 @@ fun DetailScreen(name: String, navController: NavController?) {
                 titleContentColor = MaterialTheme.colorScheme.onSurfaceVariant
             ),
             navigationIcon = {
-                IconButton(onClick = { navController?.popBackStack() }) {
+                IconButton(onClick = { navController.popBackStack() }) {
                     Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = null)
                 }
             }

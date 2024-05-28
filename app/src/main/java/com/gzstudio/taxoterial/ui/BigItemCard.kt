@@ -25,13 +25,13 @@ import com.gzstudio.taxoterial.data.Item
 import com.gzstudio.taxoterial.navigation.ScreenDetails
 
 @Composable
-fun BigItemCard(item: Item, navController: NavController?) {
+fun BigItemCard(item: Item, navController: NavController) {
     ElevatedCard(
         elevation = CardDefaults.cardElevation(
             defaultElevation = 6.dp
         ),
         onClick = {
-            navController?.navigate(ScreenDetails(name = item.name ))
+            navController.navigate(ScreenDetails(name = item.name ))
         },
         modifier = Modifier.padding(16.dp),
         colors = CardDefaults.cardColors(
