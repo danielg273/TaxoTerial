@@ -31,7 +31,7 @@ class MainActivity : ComponentActivity() {
                     }
                     composable<ScreenDetails> {
                         val args = it.toRoute<ScreenDetails>()
-                        DetailScreen(id = args.id, navController = navController)
+                        DetailScreen(name = args.name, navController = navController)
                     }
                 }
 

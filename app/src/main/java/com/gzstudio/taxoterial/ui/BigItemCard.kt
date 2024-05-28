@@ -21,17 +21,17 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.gzstudio.taxoterial.data.Dominio
+import com.gzstudio.taxoterial.data.Item
 import com.gzstudio.taxoterial.navigation.ScreenDetails
 
 @Composable
-fun DominioCardItem(dominio: Dominio, navController: NavController?) {
+fun BigItemCard(item: Item, navController: NavController?) {
     ElevatedCard(
         elevation = CardDefaults.cardElevation(
             defaultElevation = 6.dp
         ),
         onClick = {
-            navController?.navigate(ScreenDetails(id = dominio.id))
+            navController?.navigate(ScreenDetails(name = item.name ))
         },
         modifier = Modifier.padding(16.dp),
         colors = CardDefaults.cardColors(
@@ -39,7 +39,7 @@ fun DominioCardItem(dominio: Dominio, navController: NavController?) {
         ), shape = MaterialTheme.shapes.large
     ) {
         Image(
-            painter = painterResource(id = dominio.dominioImageId),
+            painter = painterResource(id = item.itemImageId!!),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -51,12 +51,12 @@ fun DominioCardItem(dominio: Dominio, navController: NavController?) {
             modifier = Modifier.padding(16.dp)
         ) {
             Text(
-                text = dominio.title,
+                text = item.name,
                 style = MaterialTheme.typography.titleLarge
             )
             Spacer(modifier = Modifier.size(8.dp))
             Text(
-                text = dominio.body,
+                text = item.body,
                 style = MaterialTheme.typography.bodyMedium,
                 maxLines = 4
             )

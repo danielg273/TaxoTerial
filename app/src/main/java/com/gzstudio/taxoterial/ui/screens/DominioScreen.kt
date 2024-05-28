@@ -25,12 +25,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.gzstudio.taxoterial.data.DataProvider
-import com.gzstudio.taxoterial.ui.DominioCardItem
+import com.gzstudio.taxoterial.ui.BigItemCard
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DominioScreen(navController: NavController?) {
-    val dominios = remember { DataProvider.dominioList }
+    val dominios = remember { DataProvider.itemLists }.filter { it.type == "Dominio" }
     val context = LocalContext.current
 
     Scaffold(topBar = {
@@ -64,7 +64,7 @@ fun DominioScreen(navController: NavController?) {
                 items(
                     items = dominios,
                     itemContent = {
-                        DominioCardItem(dominio = it, navController = navController)
+                        BigItemCard(item = it, navController = navController)
                     }
                 )
                 item {

@@ -29,25 +29,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.gzstudio.taxoterial.data.DataProvider
-import com.gzstudio.taxoterial.data.Dominio
-import com.gzstudio.taxoterial.ui.ReinoCardItem
+import com.gzstudio.taxoterial.data.Item
+import com.gzstudio.taxoterial.ui.SmallItemCard
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DetailScreen(id: Int?, navController: NavController?) {
+fun DetailScreen(name: String, navController: NavController?) {
 
-    val item = remember { DataProvider.dominioList }.find { it.id == id }
-    val subItem = remember { DataProvider.reinoList }.filter { it.idDominio == id }
+    val item = remember { DataProvider.itemLists }.find { it.name == name }
+    val subItems = remember { DataProvider.itemLists }.filter { it.type == item?.child && it.parent == name}
+//    val subItems
+
 
     Scaffold(topBar = {
         TopAppBar(
-            title = { Text(text = "${item?.title}") },
+            title = { Text(text = "${item?.name}") },
             colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                 containerColor = MaterialTheme.colorScheme.surfaceVariant,
                 titleContentColor = MaterialTheme.colorScheme.onSurfaceVariant
@@ -64,18 +63,18 @@ fun DetailScreen(id: Int?, navController: NavController?) {
 
             LazyColumn {
                 item {
-                    ItemInfo(dominio = item)
+                    ItemInfo(item = item)
                     Spacer(modifier = Modifier.size(32.dp))
                     Text(
-                        text = "Reinos:",
+                        text = "${item?.child}s:",
                         style = MaterialTheme.typography.titleLarge,
                         modifier = Modifier.padding(16.dp)
                     )
                 } 
                 items(
-                    items = subItem,
+                    items = subItems,
                     itemContent = {
-                        ReinoCardItem(reino = it, navController = navController)
+                        SmallItemCard(item = it, navController = navController )
                     }
                 )
                 item {
@@ -89,10 +88,10 @@ fun DetailScreen(id: Int?, navController: NavController?) {
 }
 
 @Composable
-private fun ItemInfo(dominio: Dominio?) {
-    if (dominio != null) {
+private fun ItemInfo(item: Item?) {
+    if (item != null) {
         Image(
-            painter = painterResource(id = dominio.dominioImageId),
+            painter = painterResource(id = item.itemImageId!!),
             contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()
@@ -104,17 +103,17 @@ private fun ItemInfo(dominio: Dominio?) {
     Column(modifier = Modifier
         .fillMaxSize()
         .padding(16.dp)) {
-        if (dominio != null) {
+        if (item != null) {
             Text(
-                text = dominio.title,
+                text = item.name,
                 style = MaterialTheme.typography.titleLarge
             )
         }
         Spacer(modifier = Modifier.size(32.dp))
 
-        if (dominio != null) {
+        if (item != null) {
             Text(
-                text = dominio.body,
+                text = item.body,
                 style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier.padding(8.dp)
             )
@@ -122,8 +121,8 @@ private fun ItemInfo(dominio: Dominio?) {
     }
 }
 
-@Preview
-@Composable
-private fun DetailScreenPreview() {
-    DetailScreen(id = null, navController = null)
-}
+//@Preview
+//@Composable
+//private fun DetailScreenPreview() {
+//    DetailScreen(id = null, navController = null)
+//}
