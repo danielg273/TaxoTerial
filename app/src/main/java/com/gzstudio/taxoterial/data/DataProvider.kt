@@ -37,7 +37,7 @@ object DataProvider {
             itemImageId = R.drawable.plantae,
             name = "Plantae",
             body = "Incluye a las plantas, las cuales son organismos eucariotas multicelulares fotosintéticos",
-            child = "Philo",
+            child = "Filo",
         ),
 
         Item(
@@ -46,7 +46,7 @@ object DataProvider {
             itemImageId = R.drawable.fungi,
             name = "Fungi",
             body = "Incluye a los hongos, los cuales son multicelulares y se caracterizan por su pared celular de quitina y su modo de nutrición heterótrofo por descomposición.",
-            child = "Philo",
+            child = "Filo",
         ),
 
         Item(
@@ -55,7 +55,7 @@ object DataProvider {
             itemImageId = R.drawable.animalia,
             name = "Animalia",
             body = "Incluye a los animales, caracterizados por su capacidad de locomoción, nutrición heterótrofa y desarrollo embrionario.",
-            child = "Philo",
+            child = "Filo",
         ),
 
         Item(
@@ -64,7 +64,7 @@ object DataProvider {
             itemImageId = R.drawable.protista,
             name = "Protista",
             body = "Incluye a los organismos eucariotas unicelulares o multicelulares simples. Pueden ser fotosintéticos, o heterótrofos.",
-            child = "Philo",
+            child = "Filo",
         ),
 
 //        Item(
