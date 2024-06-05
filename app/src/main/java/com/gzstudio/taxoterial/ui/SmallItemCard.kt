@@ -60,7 +60,8 @@ fun SmallItemCard(item: Item, navController: NavController) {
                 Spacer(modifier = Modifier.size(8.dp))
                 Text(
                     text = item.body,
-                    style = MaterialTheme.typography.bodyMedium
+                    style = MaterialTheme.typography.bodyMedium,
+                    maxLines = 4
                 )
             }
         }

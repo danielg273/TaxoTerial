@@ -7,14 +7,17 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -30,24 +33,21 @@ import com.gzstudio.taxoterial.ui.BigItemCard
 fun DominioScreen(navController: NavController) {
     val dominios = remember { DataProvider.itemLists }.filter { it.type == "Dominio" }
 
-    Scaffold(topBar = {
-        CenterAlignedTopAppBar(
-            title = { Text(text = "Dominios") },
-            colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                containerColor = MaterialTheme.colorScheme.surfaceVariant,
-                titleContentColor = MaterialTheme.colorScheme.onSurfaceVariant
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = "Dominios") },
+                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                    titleContentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                ),
+                navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = null)
+                    }
+                }
             )
-        )
-    },
-        floatingActionButton = {
-            FloatingActionButton(onClick = {
-                navController.navigate(ScreenAbout)
-            }) {
-                Icon(Icons.Filled.Info, "Floating action button.")
-            }
-        }
-
-    ) {innerPadding ->
+        }) {innerPadding ->
         Column(
             modifier = Modifier.padding(innerPadding)) {
             LazyColumn {
