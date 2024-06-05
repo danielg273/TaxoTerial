@@ -13,9 +13,15 @@ import androidx.navigation.toRoute
 import com.gzstudio.taxoterial.navigation.ScreenAbout
 import com.gzstudio.taxoterial.navigation.ScreenDetails
 import com.gzstudio.taxoterial.navigation.ScreenDominios
+import com.gzstudio.taxoterial.navigation.ScreenMenu
+import com.gzstudio.taxoterial.navigation.ScreenQuiz
+import com.gzstudio.taxoterial.navigation.ScreenReview
 import com.gzstudio.taxoterial.ui.screens.AboutScreen
 import com.gzstudio.taxoterial.ui.screens.DetailScreen
 import com.gzstudio.taxoterial.ui.screens.DominioScreen
+import com.gzstudio.taxoterial.ui.screens.MenuScreen
+import com.gzstudio.taxoterial.ui.screens.QuizScreen
+import com.gzstudio.taxoterial.ui.screens.ReviewScreen
 import com.gzstudio.taxoterial.ui.theme.TaxoTerialTheme
 
 class MainActivity : ComponentActivity() {
@@ -27,13 +33,22 @@ class MainActivity : ComponentActivity() {
 
                 val navController = rememberNavController()
 
-                NavHost(navController = navController, startDestination = ScreenDominios) {
+                NavHost(navController = navController, startDestination = ScreenMenu) {
+                    composable<ScreenMenu> {
+                        MenuScreen(navController = navController)
+                    }
+                    composable<ScreenReview> {
+                        ReviewScreen(navController = navController)
+                    }
                     composable<ScreenDominios> {
                         DominioScreen(navController)
                     }
                     composable<ScreenDetails> {
                         val args = it.toRoute<ScreenDetails>()
                         DetailScreen(name = args.name, navController = navController)
+                    }
+                    composable<ScreenQuiz> {
+                        QuizScreen(navController = navController)
                     }
                     composable<ScreenAbout> {
                         AboutScreen(navController = navController)
