@@ -1,10 +1,16 @@
 package com.gzstudio.taxoterial.ui.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -18,12 +24,17 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.gzstudio.taxoterial.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ReviewScreen(navController: NavController) {
+    val scrollState = rememberScrollState()
     Scaffold(
         topBar = {
             TopAppBar(
@@ -46,15 +57,39 @@ fun ReviewScreen(navController: NavController) {
             modifier = Modifier
                 .padding(innerPadding)
                 .padding(32.dp)
+                .verticalScroll(scrollState)
         ) {
-            Text(text = "La taxonomía es la ciencia que se dedica a la clasificación jerárquica de los organismos vivos. Es como un mapa de carreteras para el mundo natural, que nos ayuda a comprender la diversidad de la vida y las relaciones entre los diferentes grupos de seres vivos.",
-                style = MaterialTheme.typography.bodyLarge)
+            Text(
+                text = "La taxonomía es la ciencia que se dedica a la clasificación jerárquica de los organismos vivos. Es como un mapa de carreteras para el mundo natural, que nos ayuda a comprender la diversidad de la vida y las relaciones entre los diferentes grupos de seres vivos.",
+                style = MaterialTheme.typography.bodyLarge
+            )
+            MyImage(id = R.drawable.animalia)
             Spacer(modifier = Modifier.size(16.dp))
-            Text(text = "Los taxónomos utilizan una serie de características para clasificar a los organismos, como su estructura física, su fisiología, su comportamiento y su ADN. A medida que se descubren nuevas especies, se van añadiendo al sistema de clasificación, lo que lo convierte en una herramienta en constante evolución.",
-                style = MaterialTheme.typography.bodyLarge)
+            Text(
+                text = "Los taxónomos utilizan una serie de características para clasificar a los organismos, como su estructura física, su fisiología, su comportamiento y su ADN. A medida que se descubren nuevas especies, se van añadiendo al sistema de clasificación, lo que lo convierte en una herramienta en constante evolución.",
+                style = MaterialTheme.typography.bodyLarge
+            )
+            MyImage(id = R.drawable.eukarya)
             Spacer(modifier = Modifier.size(16.dp))
-            Text(text =  "La clasificación de los organismos se organiza en una jerarquía de niveles, cada uno de los cuales es más amplio que el anterior. Los niveles principales de la taxonomía son: Dominio, Reino, Filo, Clase, Orden, Familia, Género  y Especie.",
-                style = MaterialTheme.typography.bodyLarge)
+            Text(
+                text = "La clasificación de los organismos se organiza en una jerarquía de niveles, cada uno de los cuales es más amplio que el anterior. Los niveles principales de la taxonomía son: Dominio, Reino, Filo, Clase, Orden, Familia, Género  y Especie.",
+                style = MaterialTheme.typography.bodyLarge,
+            )
+            Image(painterResource(id = R.drawable.categorias_taxonomicas), contentDescription = null)
         }
     }
+}
+
+@Composable
+private fun MyImage(id: Int) {
+    Image(
+        painterResource(id = id),
+        contentDescription = null,
+        contentScale = ContentScale.Crop,
+        modifier = Modifier
+            .padding(vertical = 16.dp)
+            .fillMaxWidth()
+            .height(200.dp)
+            .clip(shape = RoundedCornerShape(12.dp))
+    )
 }
