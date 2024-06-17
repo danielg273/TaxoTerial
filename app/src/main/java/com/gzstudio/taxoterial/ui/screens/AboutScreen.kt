@@ -1,5 +1,7 @@
 package com.gzstudio.taxoterial.ui.screens
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -25,17 +27,23 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.NavController
 import com.gzstudio.taxoterial.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AboutScreen(navController: NavController) {
+    val context = LocalContext.current
+    val url = "https://github.com/danielg273/TaxoTerial" // Replace with your GitHub URL
+    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+
     Scaffold(topBar = {
         TopAppBar(
             title = { Text(text = "Acerca de...") },
@@ -86,19 +94,10 @@ fun AboutScreen(navController: NavController) {
             )
             Spacer(modifier = Modifier.size(16.dp))
             Row {
-                TextButton(onClick = { /*TODO*/ }) {
+                TextButton(onClick = { startActivity(context, intent, null) }) {
                     Text(text = "GitHub")
-                }
-                TextButton(onClick = { /*TODO*/ }) {
-                    Text(text = "Calificar")
                 }
             }
         }
     }
 }
-
-//@Preview(showSystemUi = true)
-//@Composable
-//private fun AboutPreview() {
-//    AboutScreen(navController = null)
-//}
