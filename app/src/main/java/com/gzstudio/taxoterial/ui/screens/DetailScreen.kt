@@ -91,7 +91,7 @@ fun DetailScreen(name: String, navController: NavController) {
 private fun ItemInfo(item: Item?) {
     if (item != null) {
         Image(
-            painter = painterResource(id = item.itemImageId!!),
+            painter = painterResource(id = item.itemImageId),
             contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()
@@ -100,6 +100,7 @@ private fun ItemInfo(item: Item?) {
             contentScale = ContentScale.Crop
         )
     }
+
     Column(modifier = Modifier
         .fillMaxSize()
         .padding(16.dp)) {

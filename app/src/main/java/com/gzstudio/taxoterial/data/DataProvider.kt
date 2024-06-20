@@ -67,6 +67,46 @@ object DataProvider {
             child = "Filo",
         ),
 
+        //Filos de plantae
+        Item(
+            parent = "Plantae",
+            type = "Filo",
+            name = "Briofitas",
+            body = "Son plantas no vasculares que habitan en ambientes húmedos. Se caracterizan por su pequeño tamaño y su falta de sistema vascular. Las briofitas incluyen musgos, antoceros y hepáticas.",
+            child = "Clase",
+        ),
+        Item(
+            parent = "Plantae",
+            type = "Filo",
+            name = "Pteridofitas",
+            body = "Son plantas vasculares que presentan un sistema de transporte de agua y nutrientes. Se reproducen por esporas y no tienen flores ni semillas. Las pteridofitas incluyen helechos, equisetos y licopodios.",
+            child = "Clase",
+        ),
+        Item(
+            parent = "Plantae",
+            type = "Filo",
+            name = "Gimnospermas",
+            body = "Son plantas vasculares que producen semillas desnudas, sin fruto que las envuelva. Las gimnospermas incluyen coníferas (pinos, abetos, cedros) y ginkgo biloba.",
+            child = "Clase",
+        ),
+        Item(
+            parent = "Plantae",
+            type = "Filo",
+            name = "Angiospermas",
+            body = "Son las plantas con flores y frutos que contienen las semillas. Las angiospermas son el grupo más diverso del Reino Plantae y comprenden la mayoría de las plantas que conocemos, como árboles, arbustos, hierbas, flores y frutas.",
+            child = "Clase",
+        ),
+        Item(
+            parent = "Plantae",
+            type = "Filo",
+            name = "Algas",
+            body = "Son un grupo muy diverso de organismos fotosintéticos que pueden ser unicelulares o multicelulares. Las algas habitan en ambientes acuáticos, tanto marinos como dulceacuícolas. Algunas algas son importantes productores primarios en los ecosistemas acuáticos.",
+            child = "Clase",
+        ),
+
+
+
+
 //        Item(
 //            parent = "Plantae", // Este se queda igual
 //            type = "Filo", // Se queda igual

@@ -16,6 +16,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -58,13 +59,17 @@ fun MenuScreen(navController: NavController) {
             )
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = {
-                navController.navigate(ScreenAbout)
-            }) {
+            FloatingActionButton(
+                onClick = {
+                    navController.navigate(ScreenAbout)
+                },
+                containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+            ) {
                 Icon(Icons.Filled.Info, "Floating action button.")
             }
         }
-    ) {innerPadding ->
+    ) { innerPadding ->
         Column(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -75,6 +80,10 @@ fun MenuScreen(navController: NavController) {
         ) {
             Button(
                 onClick = { navController.navigate(ScreenReview) },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                    contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                ),
                 modifier = Modifier.fillMaxWidth(0.8f)
             ) {
                 Text(
@@ -87,6 +96,10 @@ fun MenuScreen(navController: NavController) {
 
             Button(
                 onClick = { navController.navigate(ScreenDominios) },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                    contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                ),
                 modifier = Modifier.fillMaxWidth(0.8f)
             ) {
                 Text(
@@ -99,6 +112,10 @@ fun MenuScreen(navController: NavController) {
 
             Button(
                 onClick = { navController.navigate(ScreenQuiz) },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                    contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                ),
                 modifier = Modifier.fillMaxWidth(0.8f)
             ) {
                 Text(
